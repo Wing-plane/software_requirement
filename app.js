@@ -27,13 +27,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 //页面路由
 var login = require('./routes/login');
 app.use('/',login);
-app.use('/login', login);
+app.use('/login',login);
 
 var adminHome = require('./routes/adminHome');
-app.use('/adminHome', adminHome);
+app.use('/adminHome',adminHome);
 
-var queryUser = require("./routes/queryUser");
-app.use('/queryUser', queryUser);
+
+
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

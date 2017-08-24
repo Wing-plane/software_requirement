@@ -1,13 +1,11 @@
-/**
- * Created by ASUS on 2017/8/17.
- */
+
 var express = require('express');
 var router = express.Router();
 var connection = require('../DB_config');
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index');
+    res.render('login');
+
 });
 
 router.post('/login_verify', function(req, res, next) {
@@ -18,26 +16,30 @@ router.post('/login_verify', function(req, res, next) {
     connection.query(sql,sqlParams,function(err,result){
 
         if(err){
-            console.log('error',err.message);
+            console.log('error:',err.message);
             return;
         }
 
-        if(result.length == 0){
+        var json={};
 
-            //找不到
+        if(result.length == 0){
+            //能查询到
+            json['verify'] = false;
 
         }else{
-            //返回界面
-            
+            //不能查询到
+            json['verify'] = true;
 
         }
 
+        res.send(json);
+        res.end("");
+
+
     });
 
-
-
-
 });
+
 
 
 module.exports = router;
