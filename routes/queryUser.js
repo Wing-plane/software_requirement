@@ -3,7 +3,7 @@ var router = express.Router();
 var connection = require('../DB_config');
 
 //返回用户查询界面html
-router.get('/queryUser', function(req, res, next) {
+router.post('/queryUser', function(req, res, next) {
     res.render('queryUser');
 
 });

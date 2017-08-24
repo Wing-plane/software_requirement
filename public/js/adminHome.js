@@ -43,12 +43,12 @@ $(document).ready(function () {
     //点击加载首页
     $("#firstPage").click(function () {
 
-        $.get("/adminHome/firstPage",function(data){
+        $.post("/adminHome/firstPage",function(data){
             $("#subHtml").html(data)
                 .ready(function () {
 
                     //设置当前需要审核的注册用户的个数
-                    $.get("/adminHome/registerCheck",
+                    $.post("/adminHome/registerCheck",
                         function (data) {
                             $("#checkNum").html("当前有"+data.CheckNum+"个用户注册需要审核！");
                         });
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     //点击加载用户信息查询页面
     $("#queryUser").click(function(){
-        $.get("/queryUser/queryUser",function(data){
+        $.post("/queryUser/queryUser",function(data){
             $("#subHtml").html(data)
                 .ready(function () {
                     //校准宽度与高度
