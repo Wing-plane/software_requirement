@@ -73,4 +73,50 @@ router.post('/queryUserData', function(req, res, next) {
 
 });
 
+//处理详细信息的查询请求
+router.post('/userDetail', function(req, res, next) {
+    console.log(req.body);
+    //
+
+    var sql = " select photoaddress,studentCard,nickname,credit,name,sex,college,studentID from useracc natural join baseinformation where acc = ?";
+    var sqlParams = [req.body.acc];
+
+    connection.query(sql,sqlParams,function(err,result){
+
+        if(err){
+            console.log('error:',err.message);
+            return;
+        }
+
+        var json={};
+        //console.log(result);
+
+        if(result.length == 0){
+            //查不到
+            // json['acc'] = false;
+
+        }else{
+            //能查询到
+             json['photo'] =result[0].photoaddress;
+             json['studentCard'] =result[0].studentCard;
+             json['acc'] = req.body.acc;
+             json['nickname'] =result[0].nickname ;
+             json['credit'] =result[0].credit ;
+             json['name'] =result[0].name ;
+             json['sex'] =result[0].sex ;
+             json['college'] =result[0].college ;
+             json['studentID'] =result[0].studentID ;
+             console.log(json);
+        }
+
+        res.send(json);
+        res.end("");
+
+
+    });
+
+});
+
 module.exports = router;
+
+// router.post('/queryUserData', function(req, res, next) {});

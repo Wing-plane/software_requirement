@@ -223,16 +223,16 @@ function addDisplayEvent(){
                 },
                 function (data) {
 
-
-                    $("#photo").attr("src",data.photo);
-                    $("#studentCard").attr("src",data.studentCard);
-                    $("#acc").val(data.acc);
-                    $("#nickname").val(data.nickname);
-                    $("#credit").val(data.credit);
-                    $("#name").val(data.name);
-                    $("#sex").val(data.sex);
-                    $("#college").val(data.college);
-                    $("#studentID").val(data.studentID);
+                    
+                   // $("#photo").attr("src",data.photo);
+                   // $("#studentCard").attr("src",data.studentCard);
+                    $("#acc").text(data.acc);
+                    $("#nickname").text(data.nickname);
+                    $("#credit").text(data.credit);
+                    $("#name").text(data.name);
+                    $("#sex").text(data.sex);
+                    $("#college").text(data.college);
+                    $("#studentID").text(data.studentID);
 
                 }
             )
