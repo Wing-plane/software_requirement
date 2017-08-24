@@ -32,9 +32,7 @@ router.get('/queryUser', function(req, res, next) {
 //点击查询后根据条件返回用户信息
 router.post('/queryUserData', function(req, res, next) {
 
-    console.log('resultttttttttttttttt');
     console.log(req.body);
-
 
     var searchCondition = req.body.searchCondition;
     var creditFrom = req.body.creditFrom;
