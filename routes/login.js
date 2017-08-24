@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var connection = require('../DB_config');
+var fs = require('fs');
 
 router.get('/', function(req, res, next) {
     res.render('login');
@@ -9,6 +10,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login_verify', function(req, res, next) {
+
+//     fs.mkdir("./tmp",function(err){
+//    if (err) {
+//        return console.error(err);
+//    }
+//    console.log("目录创建成功。");
+//     });
    
     var sql = 'select * from adminAcc where acc=? and pwd=?';
     var sqlParams = [req.body.username,req.body.password];

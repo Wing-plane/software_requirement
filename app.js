@@ -32,7 +32,21 @@ app.use('/login',login);
 var adminHome = require('./routes/adminHome');
 app.use('/adminHome',adminHome);
 
+//queryUser
+var queryUser = require('./routes/queryUser');
+app.use('/queryUser',queryUser);
 
+//auditUser
+var auditUser = require('./routes/auditUser');
+app.use('/auditUser',auditUser);
+
+//queryProduct
+var queryProduct = require('./routes/queryProduct');
+app.use('/queryProduct',queryProduct);
+
+//queryRecord
+var queryRecord = require('./routes/queryRecord');
+app.use('/queryRecord',queryRecord);
 
 
 

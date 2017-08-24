@@ -63,7 +63,44 @@ $(document).ready(function () {
 
     //点击加载用户信息查询页面
     $("#queryUser").click(function(){
-        $.get("/adminHome/queryUser",function(data){
+        $.get("/queryUser/queryUser",function(data){
+            $("#subHtml").html(data)
+                .ready(function () {
+                    //校准宽度与高度
+                    $("#queryUserHtml").width($("#navigation").width())
+                        .height(($(document).height()-120));
+                });
+        });
+    });
+
+    //点击加载审核界面
+    $("#auditUser").click(function(){
+        $.get("/auditUser/auditUser",function(data){
+            $("#subHtml").html(data)
+                .ready(function () {
+                    //校准宽度与高度
+                    $("#queryUserHtml").width($("#navigation").width())
+                        .height(($(document).height()-120));
+                });
+        });
+    });
+
+    //点击加载订单界面
+    $("#queryRecord").click(function(){
+        $.get("/queryRecord/queryRecord",function(data){
+            $("#subHtml").html(data)
+                .ready(function () {
+                    //校准宽度与高度
+                    $("#queryUserHtml").width($("#navigation").width())
+                        .height(($(document).height()-120));
+                });
+        });
+    });
+
+    //点击加载商品界面
+    $("#queryProduct").click(function(){
+        alert('product');
+        $.get("/queryProduct/queryProduct",function(data){
             $("#subHtml").html(data)
                 .ready(function () {
                     //校准宽度与高度
