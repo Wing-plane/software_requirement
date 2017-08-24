@@ -93,7 +93,7 @@ router.post('/userDetail', function(req, res, next) {
 
         if(result.length == 0){
             //查不到
-            // json['acc'] = false;
+            
 
         }else{
             //能查询到
