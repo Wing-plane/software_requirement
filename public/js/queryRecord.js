@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("#queryButton").click(function () {
         $.post("/queryRecord/queryRecordData",
             {
-                searchCondition:$("#searchCondition")
+                searchCondition:$("#searchCondition").val()
             },
             function (data) {
 
@@ -124,6 +124,9 @@ function createRow(result,length,displayLength){
                         $(".queryCol:eq("+(i*4+1)+")").html(result[i+index*displayLength].productID);
                         $(".queryCol:eq("+(i*4+2)+")").html(result[i+index*displayLength].time);
                         $(".queryCol:eq("+(i*4+3)+")").html(result[i+index*displayLength].status);
+
+                        $(".displayButton:eq("+(i)+")").attr("data-recordID",result[i+index*displayLength].recordID)
+                            .css("display",'');
                     }
                     else {
                         $(".queryCol:eq("+(i*4)+")").html("");
@@ -173,7 +176,7 @@ function createRow(result,length,displayLength){
             $(".queryCol:eq("+(i*4+1)+")").html(result[i].productID);
             $(".queryCol:eq("+(i*4+2)+")").html(result[i].time);
             $(".queryCol:eq("+(i*4+3)+")").html(result[i].status);
-            $(".displayButton:eq("+(i)+")").attr("data-acc",result[i].acc);
+            $(".displayButton:eq("+(i)+")").attr("data-recordID",result[i].recordID);
         }
     }
     addDisplayEvent();//为查看详细信息添加事件
@@ -188,7 +191,7 @@ function addDisplayEvent(){
             //设置属性------post请求
             $.post("/queryRecord/recordDetail",
                 {
-                    acc:$(element).attr("data-acc")
+                    acc:$(element).attr("data-recordID")
                 },
                 function (data) {
 
@@ -203,14 +206,14 @@ function addDisplayEvent(){
                     // $("#college").val(data.college);
                     // $("#studentID").val(data.studentID);
 
-                    $("#recordID").val(data.recordID);
-                    $("#productID").val(data.productID);
-                    $("#seller").val(data.seller);
-                    $("#buyer").val(data.buyer);
-                    $("#time").val(data.time);
-                    $("#status").val(data.status);
-                    $("#sellerMark").val(data.sellerMark);
-                    $("#buyerMark").val(data.buyerMark);
+                    $("#recordID").text(data.recordID);
+                    $("#productID").text(data.productID);
+                    $("#seller").text(data.seller);
+                    $("#buyer").text(data.buyer);
+                    $("#time").text(data.time);
+                    $("#status").text(data.status);
+                    $("#sellerMark").text(data.sellerMark);
+                    $("#buyerMark").text(data.buyerMark);
 
 
                 }

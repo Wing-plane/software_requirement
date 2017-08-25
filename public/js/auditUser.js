@@ -5,7 +5,7 @@ $(document).ready(function () {
     $("#queryButton").click(function () {
         $.post("/auditUser/auditUserData",
             {
-                searchCondition:$("#searchCondition")
+                searchCondition:$("#searchCondition").val()
             },
             function (data) {
 
@@ -35,6 +35,33 @@ $(document).ready(function () {
 
     $('#closeW').click(function(){
         $('.subWindow').css('display','none');
+    });
+
+
+    //驳回按钮事件
+    $("#reject").click(function () {
+       $.post("/auditUser/reject",
+           {
+               acc:$("#acc").val()
+           },
+           function (data) {
+
+               $("#status").val(data.status);//设置新状态
+
+           }
+       )
+    });
+
+    //通过审核按钮事件
+    $("#pass").click(function () {
+        $.post("/auditUser/pass",
+            {
+                acc:$("#acc").val()
+            },
+            function (data) {
+                $("#status").val(data.status);//设置新状态
+            }
+        )
     })
 
 });
@@ -43,10 +70,10 @@ $(document).ready(function () {
 //模拟数据
 function getData(){
     var result = [];
-    for(var i = 0 ; i < 120; i++){
+    for(var i = 0 ; i < 71; i++){
         result[i] = {};
         result[i].acc = "账号"+i;
-        result[i].pwd = "密码"+i;
+        result[i].status = "状态"+i;
         result[i].studentID = "学生号"+i;
         result[i].name = "真实姓名"+i;
     }
@@ -66,7 +93,6 @@ function createRow(result,length,displayLength){
                 "<td class = 'queryCol'></td>"+
                 "<td>" +
                 "<button class = 'displayButton'>查看详细信息</button>" +
-                "<button class = 'passButton'>审核通过</button>" +
                 "</td>"+
                 "</tr>"
             );
@@ -124,9 +150,11 @@ function createRow(result,length,displayLength){
                 for(var i = 0; i < displayLength; i++){
                     if(i+index*displayLength < length){
                         $(".queryCol:eq("+(i*4)+")").html(result[i+index*displayLength].acc);
-                        $(".queryCol:eq("+(i*4+1)+")").html(result[i+index*displayLength].pwd);
+                        $(".queryCol:eq("+(i*4+1)+")").html(result[i+index*displayLength].status);
                         $(".queryCol:eq("+(i*4+2)+")").html(result[i+index*displayLength].studentID);
                         $(".queryCol:eq("+(i*4+3)+")").html(result[i+index*displayLength].name);
+                        $(".displayButton:eq("+(i)+")").attr("data-acc",result[i+index*displayLength].acc)
+                            .css("display",'');
                     }
                     else {
                         $(".queryCol:eq("+(i*4)+")").html("");
@@ -173,7 +201,7 @@ function createRow(result,length,displayLength){
                 "</tr>"
             );
             $(".queryCol:eq("+(i*4)+")").html(result[i].acc);
-            $(".queryCol:eq("+(i*4+1)+")").html(result[i].pwd);
+            $(".queryCol:eq("+(i*4+1)+")").html(result[i].status);
             $(".queryCol:eq("+(i*4+2)+")").html(result[i].studentID);
             $(".queryCol:eq("+(i*4+3)+")").html(result[i].name);
             $(".displayButton:eq("+(i)+")").attr("data-acc",result[i].acc);
@@ -206,44 +234,11 @@ function addDisplayEvent(){
                     $("#college").val(data.college);
                     $("#studentID").val(data.studentID);
 
-                    $("#pwd").val(data.pwd);
+                    $("#status").val(data.status);//状态
 
 
                 }
             )
-        })
-    });
-}
-
-//审核通过事件
-function addAduitEvent(){
-    $(".passButton").each(function (index, element) {
-        $(element).click(function () {
-
-            //设置属性------post请求
-            $.post("/auditUser/userAudit",
-                {
-                    acc:$(element).attr("data-acc")
-                },
-                function (data) {
-
-
-                    $("#photo").attr("src",data.photo);
-                    $("#studentCard").attr("src",data.studentCard);
-                    $("#acc").val(data.acc);
-                    $("#nickname").val(data.nickname);
-                    $("#credit").val(data.credit);
-                    $("#name").val(data.name);
-                    $("#sex").val(data.sex);
-                    $("#college").val(data.college);
-                    $("#studentID").val(data.studentID);
-
-                    $("#pwd").val(data.pwd);
-
-                }
-            )
-
-
         })
     });
 }

@@ -75,37 +75,43 @@ $(document).ready(function () {
 
     //点击加载审核界面
     $("#auditUser").click(function(){
-        $.get("/auditUser/auditUser",function(data){
+        $.post("/auditUser/auditUser",function(data){
             $("#subHtml").html(data)
                 .ready(function () {
                     //校准宽度与高度
                     $("#queryUserHtml").width($("#navigation").width())
                         .height(($(document).height()-120));
+                    //子窗口可拖动
+                    enableDrag($(".subWindow"),$(".subWindow"));
                 });
         });
     });
 
     //点击加载订单界面
     $("#queryRecord").click(function(){
-        $.get("/queryRecord/queryRecord",function(data){
+        $.post("/queryRecord/queryRecord",function(data){
             $("#subHtml").html(data)
                 .ready(function () {
                     //校准宽度与高度
                     $("#queryUserHtml").width($("#navigation").width())
                         .height(($(document).height()-120));
+                    //子窗口可拖动
+                    enableDrag($(".subWindow"),$(".subWindow"));
                 });
         });
     });
 
     //点击加载商品界面
     $("#queryProduct").click(function(){
-        alert('product');
-        $.get("/queryProduct/queryProduct",function(data){
+        //alert('product');
+        $.post("/queryProduct/queryProduct",function(data){
             $("#subHtml").html(data)
                 .ready(function () {
                     //校准宽度与高度
                     $("#queryUserHtml").width($("#navigation").width())
                         .height(($(document).height()-120));
+                    //子窗口可拖动
+                    enableDrag($(".subWindow"),$(".subWindow"));
                 });
         });
     });
@@ -113,3 +119,28 @@ $(document).ready(function () {
 
 });
 
+
+//实现窗口可拖动
+function enableDrag(obj,dragField){
+    //窗口的移动实现
+    var moveFlag = false;
+    var dx,dy;//鼠标距离控件的相对位置
+
+    //更新子窗口的位置
+    dragField.mousedown(function (e) {
+        moveFlag = true;
+        dx = e.pageX - parseInt(obj.css("left"));//字符串转化为整数
+        dy = e.pageY - parseInt(obj.css('top'));
+    })
+        .mousemove(function (e) {
+            if(moveFlag){//移动鼠标时计算控件左上角的坐标
+                var newX = e.pageX - dx;
+                var newY = e.pageY - dy;
+                obj.css({"left":newX,"top":newY});
+            }
+
+        })
+        .mouseup(function () {
+            moveFlag = false;
+        });
+}

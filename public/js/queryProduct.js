@@ -3,17 +3,21 @@ $(document).ready(function () {
 
     //查询按钮的事件
     $("#queryButton").click(function () {
+        
         $.post("/queryProduct/queryProductData",
             {
-                searchCondition:$("#searchCondition")
+                searchCondition:$("#searchCondition").val()
             },
             function (data) {
+                
+                
 
                 //先输出上次的查询信息
                 $(".queryR").remove();
 
                 //根据查询结果填写表格
-                var result = eval(data.result);//json格式参考模拟数据函数getData
+                 var result = eval(data.result);//json格式参考模拟数据函数getData
+                //alert(result[0].productID);
                 var length = result.length;
                 var displayLength = 12;
                 createRow(result,length,displayLength);
@@ -124,6 +128,8 @@ function createRow(result,length,displayLength){
                         $(".queryCol:eq("+(i*4+1)+")").html(result[i+index*displayLength].acc);
                         $(".queryCol:eq("+(i*4+2)+")").html(result[i+index*displayLength].status);
                         $(".queryCol:eq("+(i*4+3)+")").html(result[i+index*displayLength].name);
+                        $(".displayButton:eq("+(i)+")").attr("data-productID",result[i+index*displayLength].productID)
+                            .css("display",'');
                     }
                     else {
                         $(".queryCol:eq("+(i*4)+")").html("");
@@ -169,11 +175,11 @@ function createRow(result,length,displayLength){
                 "<td><button class = 'displayButton'>查看详细信息</button></td>"+
                 "</tr>"
             );
-            $(".queryCol:eq("+(i*4)+")").html(result[i].code);
-            $(".queryCol:eq("+(i*4+1)+")").html(result[i].user);
-            $(".queryCol:eq("+(i*4+2)+")").html(result[i].state);
+            $(".queryCol:eq("+(i*4)+")").html(result[i].productID);
+            $(".queryCol:eq("+(i*4+1)+")").html(result[i].acc);
+            $(".queryCol:eq("+(i*4+2)+")").html(result[i].status);
             $(".queryCol:eq("+(i*4+3)+")").html(result[i].name);
-            $(".displayButton:eq("+(i)+")").attr("data-acc",result[i].acc);
+            $(".displayButton:eq("+(i)+")").attr("data-productID",result[i].productID);
         }
     }
     addDisplayEvent();//为查看详细信息添加事件
@@ -188,7 +194,7 @@ function addDisplayEvent(){
             //设置属性------post请求
             $.post("/queryProduct/productDetail",
                 {
-                    acc:$(element).attr("data-acc")
+                    acc:$(element).attr("data-productID")
                 },
                 function (data) {
 

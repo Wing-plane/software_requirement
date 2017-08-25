@@ -5,7 +5,7 @@
     <title>queryProduct</title>
 
     <link rel = stylesheet type = "text/css" href="/css/auditUser.css"/>
-    <script type = "text/javascript" src = "/js/jquery-3.2.1.min.js"></script>
+    <script type = "text/javascript" src = "./js/jquery-3.2.1.min.js"></script>
     <script type = "text/javascript" src = "/js/auditUser.js"></script>
 
 </head>
@@ -29,7 +29,7 @@
     <table id = "queryTable">
         <tr style="text-align: center">
             <th>账号</th>
-            <th>密码</th>
+            <th>状态</th>
             <th>学生号</th>
             <th>姓名</th>
             <th>操作</th>
@@ -41,6 +41,8 @@
 <div class = "subWindow" >
     <div id = "moveAble">
         <small style="margin-left: 5px;color:#0c1eff">详细信息</small>
+        <button class = "WindButton" id = "pass">通过</button>
+        <button class = "WindButton" id = "reject">驳回</button>
         <button class = "WinButton" id = "closeW">关闭</button>
     </div>
     <table>
@@ -52,8 +54,8 @@
             <td id = 'acc'></td>
         </tr>
         <tr>
-            <td>密码</td>
-            <td id = 'pwd'></td>
+            <td>状态</td>
+            <td id = 'status'></td>
         </tr>
         <tr>
             <td>昵称</td>

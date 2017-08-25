@@ -8,7 +8,7 @@ $(document).ready(function(){
                 password: $("#password").val()
             },
             function (data) {
-                alert(data.verify);
+                //alert(data.verify);
                 if(data.verify === true){
                     //location.href = '/adminHome';//跳转到管理员首页
                     //$.post("/adminHome");

@@ -16,9 +16,28 @@ router.post('/firstPage', function(req, res, next) {
 
 //查询有多少用户待审核
 router.post('/registerCheck', function(req, res, next) {
-    var jason = {CheckNum:5};
-    res.send(jason);
-    res.end("");
+
+    var sql = "select count(*) as count from userAcc where status = '待审核';";
+    var sqlParams = [];
+
+    connection.query(sql,sqlParams,function(err,result){
+
+        if(err){
+            console.log('error:',err.message);
+            return;
+        }
+
+        
+        console.log(result[0].count);
+
+        var jason = {CheckNum:result[0].count};
+        res.send(jason);
+        res.end("");
+
+
+    });
+
+
 
 });
 
