@@ -9,31 +9,31 @@ $(document).ready(function () {
                 searchCondition:$("#searchCondition").val()
             },
             function (data) {
-                
-                
-
+        
+        
+        
                 //先输出上次的查询信息
                 $(".queryR").remove();
-
+        
                 //根据查询结果填写表格
                  var result = eval(data.result);//json格式参考模拟数据函数getData
                 //alert(result[0].productID);
                 var length = result.length;
                 var displayLength = 12;
                 createRow(result,length,displayLength);
-
+        
             }
         )
 
 
-        //测试数据
+       // 测试数据
 
-        // $(".queryR").remove();
-        //
-        // var result = getData();//json格式参考模拟数据函数getData
-        // var length = result.length;
-        // var displayLength = 12;
-        // createRow(result,length,displayLength);
+        $(".queryR").remove();
+
+        var result = getData();//json格式参考模拟数据函数getData
+        var length = result.length;
+        var displayLength = 12;
+        createRow(result,length,displayLength);
     });
 
 
@@ -45,17 +45,17 @@ $(document).ready(function () {
 
 
 //模拟数据
-function getData(){
-    var result = [];
-    for(var i = 0 ; i < 120; i++){
-        result[i] = {};
-        result[i].productID = "商品码"+i;
-        result[i].acc = "用户"+i;
-        result[i].status = "状态"+i;
-        result[i].name = "商品名"+i;
-    }
-    return result;
-}
+// function getData(){
+//     var result = [];
+//     for(var i = 0 ; i < 120; i++){
+//         result[i] = {};
+//         result[i].productID = "商品码"+i;
+//         result[i].acc = "用户"+i;
+//         result[i].status = "状态"+i;
+//         result[i].name = "商品名"+i;
+//     }
+//     return result;
+// }
 
 function createRow(result,length,displayLength){
     if(length > displayLength){
@@ -198,26 +198,51 @@ function addDisplayEvent(){
                 },
                 function (data) {
 
+                    $("#productID").text(data.productID);
+                    $("#acc").text(data.acc);
+                    $("#status").text(data.status);
+                    $("#name").text(data.name);
+                    $("#price").text(data.price);
+                    $("#detail").text(data.detail);
+                    $("#type").text(data.type);
 
-                    // $("#photo").attr("src",data.photo);
-                    // $("#studentCard").attr("src",data.studentCard);
-                    // $("#acc").val(data.acc);
-                    // $("#nickname").val(data.nickname);
-                    // $("#credit").val(data.credit);
-                    // $("#name").val(data.name);
-                    // $("#sex").val(data.sex);
-                    // $("#college").val(data.college);
-                    // $("#studentID").val(data.studentID);
+                    //先删除上次的图片及选择栏
+                    // $("#photo").attr("src","");
+                    // $(".addSelect").remove();
 
-                    $("#productID").val(data.productID);
-                    $("#acc").val(data.acc);
-                    $("#status").val(data.status);
-                    $("#name").val(data.name);
-                    $("#price").val(data.price);
-                    $("#detail").val(data.detail);
-                    $("#type").val(data.type);
+                    // //添加图片
+                    // var photoArray = eval(data.photoArray);
+                    // var length = photoArray.length;
+
+                    // if(length === 0){
+                    //     return;
+                    // }
+
+                    // //设置初始图片
+                    // $("#photo").attr("src",photoArray[0]);
+                    // $(".photoSelect").append("<option class = 'addSelect' selected = 'selected'>图片1</option>");
+                    // $(".addSelect:eq(0)").attr("data-photo",photoArray[0]);
+
+                    // //添加其他选项
+                    // for(var i = 1; i < length ; i++){
+                    //     $(".photoSelect").append("<option class = 'addSelect'>图片"+(i+1)+"</option>");
+                    //     $(".addSelect:eq("+i+")").attr("data-photo",photoArray[i]);
+                    // }
+
+                    // //为选择添加事件
+                    // $(".addSelect").each(function (index2, element2) {
+                    //     $(element2).click(function () {
+                    //         $("#photo").attr("src",$(element2).attr("data-photo"));
+                    //     })
+                    // });
+
+
+
+
                 }
             )
+
+
         })
     });
 }

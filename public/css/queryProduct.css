@@ -2,3 +2,8 @@
 .subWindow{
     top:200px;
 }
+
+.photoSelect{
+    float: right;
+    border-style: groove;
+}

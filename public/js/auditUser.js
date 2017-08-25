@@ -42,11 +42,11 @@ $(document).ready(function () {
     $("#reject").click(function () {
        $.post("/auditUser/reject",
            {
-               acc:$("#acc").val()
+               acc:$("#acc").text()
            },
            function (data) {
 
-               $("#status").val(data.status);//设置新状态
+               $("#status").text(data.status);//设置新状态
 
            }
        )
@@ -56,10 +56,10 @@ $(document).ready(function () {
     $("#pass").click(function () {
         $.post("/auditUser/pass",
             {
-                acc:$("#acc").val()
+                acc:$("#acc").text()
             },
             function (data) {
-                $("#status").val(data.status);//设置新状态
+                $("#status").text(data.status);//设置新状态
             }
         )
     })

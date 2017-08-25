@@ -18,12 +18,6 @@
     <div id = "queryDiv">
         <img class = "searchIco" src="img/search.png"/>
         <input type="search" id = searchCondition  placeholder="请输入检索条件" />
-        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-        <!--<label>加入信用范围：</label>-->
-        <!--<input type="number" id = "creditFrom" class = "creditSearch" min="1"/>-->
-        <!--<label>至</label>-->
-        <!--<input type="number" id = "creditTo" class = "creditSearch" max="100"/>-->
-        <!--&nbsp;&nbsp;-->
         <button id = "queryButton">查询</button>
     </div>
     <table id = "queryTable">
@@ -45,8 +39,11 @@
     </div>
     <table>
         <tr>
-            <td colspan="2" rowspan="3" >
-                <img id = 'photo' alt="商品图片" src = "" >
+            <td colspan="2" rowspan="3" style="cursor: pointer">
+                <img id = 'photo' alt="商品图片" src = ""/>
+                <select class = "photoSelect" >
+
+                </select>
             </td>
             <td>商品码</td>
             <td id = 'productID'></td>
@@ -65,9 +62,16 @@
             <td>价格</td>
             <td id = 'price'></td>
         </tr>
+
+        <tr>
+            <td colspan="4" >商品描述信息</td>
+        </tr>
+
         <tr>
             <td colspan="4" rowspan="2" id = 'detail'></td>
         </tr>
+
+
     </table>
 </div>
 </body>

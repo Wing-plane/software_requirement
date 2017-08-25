@@ -89,4 +89,62 @@ router.post('/userDetail', function(req, res, next) {
 
 });
 
+
+
+//处理通过事件
+router.post('/pass', function(req, res, next) {
+    
+    var acc = req.body.acc;
+    
+    var sql = "update userAcc set status='已通过' where acc = ?;";
+    var sqlParams = [acc];
+
+    connection.query(sql,sqlParams,function(err,result){
+
+        if(err){
+            console.log('error:',err.message);
+            return;
+        }
+
+        var json={};
+        //更改成功
+        json['status'] = "已通过";
+        res.send(json);
+        res.end("");
+
+
+    });
+
+});
+
+
+//处理驳回事件
+router.post('/reject', function(req, res, next) {
+    
+    var acc = req.body.acc;
+    console.log(req.body);
+    var sql = "update userAcc set status='已驳回' where acc = ?;";
+    var sqlParams = [acc];
+
+    connection.query(sql,sqlParams,function(err,result){
+
+        if(err){
+            console.log('error:',err.message);
+            return;
+        }
+
+        var json={};
+        //更改成功
+        json['status'] = "已驳回";
+        res.send(json);
+        res.end("");
+
+
+    });
+
+});
+
+
+
+
 module.exports = router;
