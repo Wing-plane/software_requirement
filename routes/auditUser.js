@@ -69,7 +69,8 @@ router.post('/userDetail', function(req, res, next) {
 
         }else{
             //能查询到
-             json['photo'] =result[0].photoaddress;
+             //json['photo'] =result[0].photoaddress;
+             json['photo'] ='/img/user/admin/apple/apple.jpg';
              json['studentCard'] =result[0].studentCard;
              json['acc'] = req.body.acc;
              json['nickname'] =result[0].nickname ;

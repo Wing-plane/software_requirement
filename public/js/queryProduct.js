@@ -10,8 +10,7 @@ $(document).ready(function () {
             },
             function (data) {
         
-        
-        
+
                 //先输出上次的查询信息
                 $(".queryR").remove();
         
@@ -28,12 +27,13 @@ $(document).ready(function () {
 
        // 测试数据
 
-        $(".queryR").remove();
+        // $(".queryR").remove();
 
-        var result = getData();//json格式参考模拟数据函数getData
-        var length = result.length;
-        var displayLength = 12;
-        createRow(result,length,displayLength);
+        // var result = getData();//json格式参考模拟数据函数getData
+        // var length = result.length;
+        // var displayLength = 12;
+        // createRow(result,length,displayLength);
+
     });
 
 

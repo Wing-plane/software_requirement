@@ -222,8 +222,8 @@ function addDisplayEvent(){
                     acc:$(element).attr("data-acc")
                 },
                 function (data) {
-
-                   // $("#photo").attr("src",data.photo);
+                    alert(data.photo);
+                    $("#photo").attr("src",data.photo);
                    // $("#studentCard").attr("src",data.studentCard);
                     $("#acc").text(data.acc);
                     $("#nickname").text(data.nickname);
