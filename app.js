@@ -14,7 +14,6 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').__express);
 app.set('view engine', 'html');
 
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -23,12 +22,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //页面路由
 var login = require('./routes/login');
 app.use('/',login);
 app.use('/login',login);
 
+//adminHome
 var adminHome = require('./routes/adminHome');
 app.use('/adminHome',adminHome);
 
@@ -47,11 +46,6 @@ app.use('/queryProduct',queryProduct);
 //queryRecord
 var queryRecord = require('./routes/queryRecord');
 app.use('/queryRecord',queryRecord);
-
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

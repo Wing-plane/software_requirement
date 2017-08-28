@@ -1,9 +1,12 @@
 @import 'queryUser.css';
-.subWindow{
-    top:200px;
+
+.subWindow
+{
+    top: 200px;
 }
 
-.photoSelect{
+.photoSelect
+{
     float: right;
     border-style: groove;
 }

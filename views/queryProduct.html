@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>queryProduct</title>
-
-    <link rel = stylesheet type = "text/css" href="/css/queryProduct.css"/>
-    <script type = "text/javascript" src = "/js/jquery-3.2.1.min.js"></script>
-    <script type = "text/javascript" src = "/js/queryProduct.js"></script>
-
+    <link rel=stylesheet type="text/css" href="/css/queryProduct.css"/>
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/queryProduct.js"></script>
 </head>
 <body>
-<div id = "queryUserHtml">
-    <div id = "queryUserTitle">
+<div id="queryUserHtml">
+    <div id="queryUserTitle">
         查询列表
-        <img class = "alert" src="/img/alert.png"/>
+        <img class="alert" src="/img/alert.png"/>
     </div>
-    <div id = "queryDiv">
-        <img class = "searchIco" src="img/search.png"/>
-        <input type="search" id = searchCondition  placeholder="请输入检索条件" />
-        <button id = "queryButton">查询</button>
+    <div id="queryDiv">
+        <img class="searchIco" src="img/search.png"/>
+        <input type="search" id=searchCondition placeholder="请输入检索条件"/>
+        <button id="queryButton">查询</button>
     </div>
-    <table id = "queryTable">
+    <table id="queryTable">
         <tr style="text-align: center">
             <th>商品码</th>
             <th>发布的用户</th>
@@ -30,48 +28,43 @@
         </tr>
     </table>
 </div>
-
 <!--增加显示详细信息的窗口-->
-<div class = "subWindow" >
-    <div id = "moveAble">
+<div class="subWindow">
+    <div id="moveAble">
         <small style="margin-left: 5px;color:#0c1eff">详细信息</small>
-        <button class = "WinButton" id = "closeW">关闭</button>
+        <button class="WinButton" id="closeW">关闭</button>
     </div>
     <table>
         <tr>
             <td colspan="2" rowspan="3" style="cursor: pointer">
-                <img id = 'photo' alt="商品图片" src = ""/>
-                <select class = "photoSelect" >
+                <img id='photo' alt="商品图片" src=""/>
+                <select class="photoSelect">
 
                 </select>
             </td>
             <td>商品码</td>
-            <td id = 'productID'></td>
+            <td id='productID'></td>
         </tr>
         <tr>
             <td>发布的用户</td>
-            <td id = 'acc'></td>
+            <td id='acc'></td>
         </tr>
         <tr>
             <td>状态</td>
-            <td id = 'status'></td>
+            <td id='status'></td>
         </tr>
         <tr>
             <td>商品名称</td>
-            <td id = 'name'></td>
+            <td id='name'></td>
             <td>价格</td>
-            <td id = 'price'></td>
+            <td id='price'></td>
         </tr>
-
         <tr>
-            <td colspan="4" >商品描述信息</td>
+            <td colspan="4">商品描述信息</td>
         </tr>
-
         <tr>
-            <td colspan="4" rowspan="2" id = 'detail'></td>
+            <td colspan="4" rowspan="2" id='detail'></td>
         </tr>
-
-
     </table>
 </div>
 </body>

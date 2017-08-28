@@ -1,43 +1,48 @@
-body{
+body
+{
     min-width: 1000px;
     background-color: #0369b3;
 }
 
-#navigation{
+#navigation
+{
     border-bottom: 2px #d1d1d8 solid;
     float: left;
     width: 100%;
     background: url("../img/homeBack.jpg");
     background-size: 100%;
-    margin:-7px -0px 0 -8px;
-    padding: 0 16px 0 0 ;
+    margin: -7px -0px 0 -8px;
+    padding: 0 16px 0 0;
 
 }
 
-.options{
-    list-style:none;
+.options
+{
+    list-style: none;
 }
 
-.options li{
+.options li
+{
 
     position: relative;
-    top:3px;
+    top: 3px;
 
     color: #d1d1d8;
-    margin-top:32px;
+    margin-top: 32px;
     margin-left: 25px;
     float: left;
     cursor: pointer;
     padding: 6px 12px 6px 12px;
 
-
 }
 
-#firstLi{
+#firstLi
+{
     margin-left: 90px;
 }
 
-#title{
+#title
+{
     margin-left: 3%;
     color: #d1d1d8;
     font-size: 40px;
@@ -49,9 +54,10 @@ body{
     padding-top: 12px;
 }
 
-#subHtml{
+#subHtml
+{
     position: absolute;
-    left:7px;
+    left: 7px;
     top: 117px;
     width: auto;
     height: auto;
