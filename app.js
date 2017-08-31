@@ -47,6 +47,25 @@ app.use('/queryProduct',queryProduct);
 var queryRecord = require('./routes/queryRecord');
 app.use('/queryRecord',queryRecord);
 
+//android index
+var index = require('./routes/index');
+app.use('/index',index);
+
+//android user
+var user = require('./routes/user');
+app.use('/user',user);
+
+//android mine
+var mine = require('./routes/mine');
+app.use('/mine',mine);
+
+//android product
+var product = require('./routes/product');
+app.use('/product',product);
+
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
